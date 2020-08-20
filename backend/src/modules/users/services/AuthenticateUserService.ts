@@ -41,7 +41,7 @@ class AuthenticateUserService {
         );
 
         if (!passwordMethod) {
-            throw new Error('Incorrect email/password combination');
+            throw new AppError('Incorrect email/password combination');
         }
 
         const token = sign({}, authConfig.jwt.secret, {
