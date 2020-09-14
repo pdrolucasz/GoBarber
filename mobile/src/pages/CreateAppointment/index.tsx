@@ -117,8 +117,6 @@ const CreateAppointment: React.FC = () => {
             date.setHours(selectedHour)
             date.setMinutes(0)
 
-            console.log(date)
-
             await api.post('/appointments', {
                 provider_id: selectedProvider,
                 date,
@@ -126,6 +124,7 @@ const CreateAppointment: React.FC = () => {
 
             navigate('AppointmentCreated', { date: date.getTime() })
         } catch (err) {
+            console.log(err)
             Alert.alert(
                 'Erro ao criar agendamento',
                 'Ocorreu um erro ao tentar criar agendamento, tente novamente.'
