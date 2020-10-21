@@ -127,35 +127,39 @@ const Profile: React.FC = () => {
     }, [navigation, updateUser])
 
     const handleUpdateAvatar = useCallback(() => {
-        ImagePicker.showImagePicker({
-            title: 'Selecione um avatar',
-            cancelButtonTitle: 'Cancelar',
-            takePhotoButtonTitle: 'Usar câmera',
-            chooseFromLibraryButtonTitle: 'Escolher da galeria'
-        }, response => {
-            if (response.didCancel) {
-                return
-            }
-              
-            if (response.error) {
-                Alert.alert('Erro ao atualizar seu avatar.')
-                return
-            }
-
-            const source = { uri: response.uri };
-
-            const data = new FormData()
-
-            data.append('avatar', {
-                type: 'image/jpeg',
-                name: `${user.id}.jpg`,
-                uri: response.uri
+        try {
+            ImagePicker.showImagePicker({
+                title: 'Selecione um avatar',
+                cancelButtonTitle: 'Cancelar',
+                takePhotoButtonTitle: 'Usar câmera',
+                chooseFromLibraryButtonTitle: 'Escolher da galeria'
+            }, response => {
+                if (response.didCancel) {
+                    return
+                }
+                  
+                if (response.error) {
+                    Alert.alert('Erro ao atualizar seu avatar.')
+                    return
+                }
+    
+                // const source = { uri: response.uri };
+    
+                const data = new FormData()
+    
+                data.append('avatar', {
+                    type: 'image/jpeg',
+                    name: `${user.id}.jpg`,
+                    uri: response.uri
+                })
+                
+                api.patch('/users/avatar', data).then(apiResponse => {
+                    updateUser(apiResponse.data)
+                })
             })
-            
-            api.patch('/users/avatar', data).then(apiResponse => {
-                updateUser(apiResponse.data)
-            })
-        })
+        }catch (err) {
+            console.log(err)
+        }
     }, [updateUser, user.id])
 
     const handleGoBack = useCallback(() => {
