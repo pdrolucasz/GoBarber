@@ -3,6 +3,5 @@ node_modules
 tmp/*
 !tmp/.gitkeep
 coverage
-README.MD
 .env
 ormconfig.json
