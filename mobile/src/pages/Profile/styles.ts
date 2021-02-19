@@ -9,16 +9,17 @@ export const Container = styled.View`
 `
 
 export const BackButton = styled.TouchableOpacity`
-    margin-top: 90px;
+    margin-top: 40px;
 `
 
 export const Title = styled.Text`
     font-size: 20px;
     color: #f4ede8;
     font-family: 'RobotoSlab-Medium';
-    margin: 24px 0;
+    margin: 24px 0 24px;
 `
 export const UserAvatarButton = styled.TouchableOpacity`
+    margin-top: 32px;
 `
 
 export const UserAvatar = styled.Image`

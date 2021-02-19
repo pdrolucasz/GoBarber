@@ -175,7 +175,6 @@ const Profile: React.FC = () => {
             >
                 <ScrollView
                     keyboardShouldPersistTaps="handled"
-                    contentContainerStyle={{ flex: 1 }}
                 >
                     <Container>
                         <BackButton onPress={handleGoBack}>
@@ -247,7 +246,7 @@ const Profile: React.FC = () => {
                             <Input
                                 ref={password_confirmationInputRef}
                                 secureTextEntry
-                                name="password_confirmationInputRef"
+                                name="password_confirmation"
                                 icon="lock"
                                 placeholder="Confirmar senha"
                                 textContentType="newPassword"
